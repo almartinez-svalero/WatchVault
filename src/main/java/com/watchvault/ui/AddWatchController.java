@@ -23,6 +23,9 @@ public class AddWatchController {
     private TextField priceField;
 
     @FXML
+    private TextField imageField;
+
+    @FXML
     private CheckBox favoriteBox;
 
     private Watch result;
@@ -34,13 +37,49 @@ public class AddWatchController {
 
         try {
 
-            String model = modelField.getText();
-            String brand = brandField.getText();
-            String color = colorField.getText();
-            String movement = movementField.getText();
+            String model =
+                    modelField.getText().trim();
+
+            String brand =
+                    brandField.getText().trim();
+
+            String color =
+                    colorField.getText().trim();
+
+            String movement =
+                    movementField.getText().trim();
+
+            String image =
+                    imageField.getText().trim();
+
+            String priceText =
+                    priceField.getText().trim();
+
+            if (model.isEmpty()
+                    || brand.isEmpty()
+                    || color.isEmpty()
+                    || movement.isEmpty()
+                    || image.isEmpty()
+                    || priceText.isEmpty()) {
+
+                showError(
+                        "Todos los campos son obligatorios."
+                );
+
+                return;
+            }
 
             double price =
-                    Double.parseDouble(priceField.getText());
+                    Double.parseDouble(priceText);
+
+            if (price < 0) {
+
+                showError(
+                        "El precio no puede ser negativo."
+                );
+
+                return;
+            }
 
             boolean favorite =
                     favoriteBox.isSelected();
@@ -54,7 +93,8 @@ public class AddWatchController {
                         color,
                         movement,
                         price,
-                        favorite
+                        favorite,
+                        image
                 );
 
             } else {
@@ -66,27 +106,24 @@ public class AddWatchController {
                         color,
                         movement,
                         price,
-                        favorite
+                        favorite,
+                        image
                 );
             }
 
             close();
 
+        } catch (NumberFormatException e) {
+
+            showError(
+                    "El precio debe ser numérico."
+            );
+
         } catch (Exception e) {
 
-            Alert alert = new Alert(
-                    Alert.AlertType.ERROR
+            showError(
+                    "Error al guardar el reloj."
             );
-
-            alert.setTitle("Error");
-
-            alert.setHeaderText(null);
-
-            alert.setContentText(
-                    "Introduce datos válidos."
-            );
-
-            alert.showAndWait();
         }
     }
 
@@ -98,21 +135,50 @@ public class AddWatchController {
 
         editingWatch = watch;
 
-        modelField.setText(watch.getModel());
+        modelField.setText(
+                watch.getModel()
+        );
 
-        brandField.setText(watch.getBrand());
+        brandField.setText(
+                watch.getBrand()
+        );
 
-        colorField.setText(watch.getColor());
+        colorField.setText(
+                watch.getColor()
+        );
 
-        movementField.setText(watch.getMovement());
+        movementField.setText(
+                watch.getMovement()
+        );
 
         priceField.setText(
-                String.valueOf(watch.getPrice())
+                String.valueOf(
+                        watch.getPrice()
+                )
+        );
+
+        imageField.setText(
+                watch.getImage()
         );
 
         favoriteBox.setSelected(
                 watch.isFavorite()
         );
+    }
+
+    private void showError(String message) {
+
+        Alert alert = new Alert(
+                Alert.AlertType.ERROR
+        );
+
+        alert.setTitle("Error");
+
+        alert.setHeaderText(null);
+
+        alert.setContentText(message);
+
+        alert.showAndWait();
     }
 
     private void close() {
