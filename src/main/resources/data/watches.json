@@ -5,17 +5,9 @@
     "brand": "Rolex",
     "color": "Verde",
     "movement": "Automatico",
-    "price": 6500.0,
-    "favorite": true
-  },
-  {
-    "id": 0,
-    "model": "Royal Oak",
-    "brand": "Audemars Piguet",
-    "color": "Negro",
-    "movement": "Automatico",
-    "price": 80000.0,
-    "favorite": false
+    "price": 7000.0,
+    "favorite": false,
+    "image": "rolex.png"
   },
   {
     "id": 0,
@@ -24,6 +16,17 @@
     "color": "Azul",
     "movement": "Automatico",
     "price": 12000.0,
-    "favorite": true
+    "favorite": false,
+    "image": "omega.png"
+  },
+  {
+    "id": 0,
+    "model": "Royal Oak",
+    "brand": "Audemars Piguet",
+    "color": "Negro",
+    "movement": "Automatico",
+    "price": 80000.0,
+    "favorite": false,
+    "image": "ap.png"
   }
 ]

@@ -14,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -45,6 +47,9 @@ public class WatchesController {
 
     @FXML
     private Button deleteButton;
+
+    @FXML
+    private ImageView previewImage;
 
     private final ObservableList<Watch> watches =
             FXCollections.observableArrayList();
@@ -120,6 +125,25 @@ public class WatchesController {
                     deleteButton.setDisable(
                             newSel == null
                     );
+
+                    if (newSel != null) {
+
+                        try {
+
+                            Image image = new Image(
+                                    getClass().getResourceAsStream(
+                                            "/images/" +
+                                                    newSel.getImage()
+                                    )
+                            );
+
+                            previewImage.setImage(image);
+
+                        } catch (Exception e) {
+
+                            previewImage.setImage(null);
+                        }
+                    }
                 });
 
         table.setRowFactory(tv -> {
@@ -305,6 +329,8 @@ public class WatchesController {
             watches.remove(selected);
 
             service.saveWatches(watches);
+
+            previewImage.setImage(null);
         }
     }
 
