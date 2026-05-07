@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.watchvault.ui.AddWatchController"
+      spacing="12"
+      style="-fx-padding: 20;">
+
+    <Label text="Añadir reloj"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="modelField"
+               promptText="Modelo" />
+
+    <TextField fx:id="brandField"
+               promptText="Marca" />
+
+    <TextField fx:id="colorField"
+               promptText="Color" />
+
+    <TextField fx:id="movementField"
+               promptText="Movimiento" />
+
+    <TextField fx:id="priceField"
+               promptText="Precio" />
+
+    <CheckBox fx:id="favoriteBox"
+              text="Favorito" />
+
+    <Button text="Guardar"
+            onAction="#saveWatch" />
+
+</VBox>

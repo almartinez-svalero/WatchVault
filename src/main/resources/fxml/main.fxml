@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.watchvault.ui.MainController">
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox spacing="10"
+              prefWidth="220"
+              style="-fx-background-color: #1E293B; -fx-padding: 20;">
+
+            <Label text="WatchVault"
+                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" />
+
+            <Separator />
+
+            <Button text="Relojes"
+                    onAction="#openWatches"
+                    maxWidth="Infinity" />
+
+            <Button text="Marcas"
+                    onAction="#openBrands"
+                    maxWidth="Infinity" />
+
+            <Button text="Colecciones"
+                    onAction="#openCollections"
+                    maxWidth="Infinity" />
+
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO -->
+    <center>
+        <StackPane fx:id="contentPane"
+                   style="-fx-background-color: #F8FAFC;" />
+    </center>
+
+</BorderPane>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.watchvault.ui.WatchesController">
+
+    <top>
+
+        <ToolBar>
+
+            <Button text="Añadir"
+                    onAction="#addWatch"/>
+
+            <Button fx:id="deleteButton"
+                    text="Eliminar"
+                    onAction="#deleteWatch"/>
+
+            <Separator />
+
+            <TextField fx:id="searchField"
+                       promptText="Buscar reloj..." />
+
+        </ToolBar>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="table">
+
+            <columns>
+
+                <TableColumn fx:id="colModel"
+                             text="Modelo"
+                             prefWidth="180"/>
+
+                <TableColumn fx:id="colBrand"
+                             text="Marca"
+                             prefWidth="160"/>
+
+                <TableColumn fx:id="colColor"
+                             text="Color"
+                             prefWidth="120"/>
+
+                <TableColumn fx:id="colMovement"
+                             text="Movimiento"
+                             prefWidth="180"/>
+
+                <TableColumn fx:id="colPrice"
+                             text="Precio"
+                             prefWidth="120"/>
+
+                <TableColumn fx:id="colFavorite"
+                             text="Favorito"
+                             prefWidth="100"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+</BorderPane>
