@@ -14,14 +14,17 @@
             <Button text="Añadir"
                     onAction="#addWatch"/>
 
-            <Button fx:id="deleteButton"
-                    text="Eliminar"
+            <Button text="Eliminar"
+                    fx:id="deleteButton"
                     onAction="#deleteWatch"/>
+
+            <Button text="Exportar CSV"
+                    onAction="#exportCSV"/>
 
             <Separator />
 
             <TextField fx:id="searchField"
-                       promptText="Buscar reloj..." />
+                       promptText="Buscar reloj..."/>
 
         </ToolBar>
 

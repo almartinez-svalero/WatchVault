@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.watchvault.ui.BrandsController">
+
+    <top>
+
+        <ToolBar>
+
+            <Button text="Añadir"
+                    onAction="#addBrand"/>
+
+            <Button fx:id="deleteButton"
+                    text="Eliminar"
+                    onAction="#deleteBrand"/>
+
+            <Separator />
+
+            <TextField fx:id="searchField"
+                       promptText="Buscar marca..." />
+
+        </ToolBar>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="table">
+
+            <columns>
+
+                <TableColumn fx:id="colName"
+                             text="Marca"
+                             prefWidth="300"/>
+
+                <TableColumn fx:id="colCountry"
+                             text="País"
+                             prefWidth="300"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+</BorderPane>
