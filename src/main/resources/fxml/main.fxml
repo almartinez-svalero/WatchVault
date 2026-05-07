@@ -5,38 +5,42 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.watchvault.ui.MainController">
+            fx:controller="com.watchvault.ui.MainController"
+            stylesheets="@../css/style.css">
 
-    <!-- SIDEBAR -->
     <left>
-        <VBox spacing="10"
-              prefWidth="220"
-              style="-fx-background-color: #1E293B; -fx-padding: 20;">
+
+        <VBox spacing="15"
+              alignment="TOP_CENTER"
+              prefWidth="260"
+              styleClass="sidebar"
+              style="-fx-padding: 25;">
 
             <Label text="WatchVault"
-                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" />
+                   styleClass="sidebar-title" />
 
-            <Separator />
+            <Separator prefWidth="180" />
 
             <Button text="Relojes"
-                    onAction="#openWatches"
-                    maxWidth="Infinity" />
+                    styleClass="sidebar-button"
+                    onAction="#openWatches" />
 
             <Button text="Marcas"
-                    onAction="#openBrands"
-                    maxWidth="Infinity" />
+                    styleClass="sidebar-button"
+                    onAction="#openBrands" />
 
             <Button text="Colecciones"
-                    onAction="#openCollections"
-                    maxWidth="Infinity" />
+                    styleClass="sidebar-button"
+                    onAction="#openCollections" />
 
         </VBox>
+
     </left>
 
-    <!-- CONTENIDO -->
     <center>
-        <StackPane fx:id="contentPane"
-                   style="-fx-background-color: #F8FAFC;" />
+
+        <StackPane fx:id="contentPane" />
+
     </center>
 
 </BorderPane>

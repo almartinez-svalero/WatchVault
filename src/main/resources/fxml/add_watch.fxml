@@ -27,6 +27,9 @@
     <TextField fx:id="priceField"
                promptText="Precio" />
 
+    <TextField fx:id="imageField"
+               promptText="Imagen (ej: rolex.jpg)" />
+
     <CheckBox fx:id="favoriteBox"
               text="Favorito" />
 
