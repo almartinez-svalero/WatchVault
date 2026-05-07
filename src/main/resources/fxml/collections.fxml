@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.watchvault.ui.CollectionsController">
+
+    <top>
+
+        <ToolBar>
+
+            <Button text="Añadir"
+                    onAction="#addCollection"/>
+
+            <Button fx:id="deleteButton"
+                    text="Eliminar"
+                    onAction="#deleteCollection"/>
+
+            <Separator />
+
+            <TextField fx:id="searchField"
+                       promptText="Buscar colección..." />
+
+        </ToolBar>
+
+    </top>
+
+    <center>
+
+        <TableView fx:id="table">
+
+            <columns>
+
+                <TableColumn fx:id="colName"
+                             text="Colección"
+                             prefWidth="300"/>
+
+                <TableColumn fx:id="colTotal"
+                             text="Cantidad relojes"
+                             prefWidth="300"/>
+
+            </columns>
+
+        </TableView>
+
+    </center>
+
+</BorderPane>
