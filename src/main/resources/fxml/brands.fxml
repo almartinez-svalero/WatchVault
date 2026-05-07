@@ -35,11 +35,11 @@
 
                 <TableColumn fx:id="colName"
                              text="Marca"
-                             prefWidth="250"/>
+                             prefWidth="300"/>
 
                 <TableColumn fx:id="colCountry"
                              text="País"
-                             prefWidth="250"/>
+                             prefWidth="300"/>
 
             </columns>
 

@@ -19,6 +19,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class WatchesController {
 
     @FXML
@@ -331,6 +334,55 @@ public class WatchesController {
             service.saveWatches(watches);
 
             previewImage.setImage(null);
+        }
+    }
+
+    @FXML
+    private void exportCSV() {
+
+        try {
+
+            PrintWriter writer =
+                    new PrintWriter(
+                            new FileWriter(
+                                    "watches_export.csv"
+                            )
+                    );
+
+            writer.println(
+                    "Modelo,Marca,Color,Movimiento,Precio,Favorito"
+            );
+
+            for (Watch watch : watches) {
+
+                writer.println(
+                        watch.getModel() + "," +
+                                watch.getBrand() + "," +
+                                watch.getColor() + "," +
+                                watch.getMovement() + "," +
+                                watch.getPrice() + "," +
+                                watch.isFavorite()
+                );
+            }
+
+            writer.close();
+
+            Alert alert =
+                    new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("Exportación");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText(
+                    "CSV exportado correctamente."
+            );
+
+            alert.showAndWait();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
         }
     }
 

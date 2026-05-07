@@ -1,6 +1,7 @@
 package com.watchvault.ui;
 
 import com.watchvault.model.Brand;
+import com.watchvault.service.BrandService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +31,9 @@ public class BrandsController {
     private final ObservableList<Brand> brands =
             FXCollections.observableArrayList();
 
+    private final BrandService service =
+            new BrandService();
+
     @FXML
     public void initialize() {
 
@@ -56,7 +60,7 @@ public class BrandsController {
                     );
                 });
 
-        loadSampleData();
+        brands.addAll(service.loadBrands());
 
         FilteredList<Brand> filteredData =
                 new FilteredList<>(brands, b -> true);
@@ -143,6 +147,8 @@ public class BrandsController {
                                     country
                             )
                     );
+
+                    service.saveBrands(brands);
                 }
             }
         });
@@ -156,22 +162,10 @@ public class BrandsController {
                         .getSelectedItem();
 
         if (selected != null) {
+
             brands.remove(selected);
+
+            service.saveBrands(brands);
         }
-    }
-
-    private void loadSampleData() {
-
-        brands.add(
-                new Brand("Rolex", "Suiza")
-        );
-
-        brands.add(
-                new Brand("Omega", "Suiza")
-        );
-
-        brands.add(
-                new Brand("Audemars Piguet", "Suiza")
-        );
     }
 }

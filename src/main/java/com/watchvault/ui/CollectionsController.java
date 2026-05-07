@@ -1,6 +1,7 @@
 package com.watchvault.ui;
 
 import com.watchvault.model.CollectionItem;
+import com.watchvault.service.CollectionService;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -31,6 +32,9 @@ public class CollectionsController {
     private final ObservableList<CollectionItem> collections =
             FXCollections.observableArrayList();
 
+    private final CollectionService service =
+            new CollectionService();
+
     @FXML
     public void initialize() {
 
@@ -57,7 +61,9 @@ public class CollectionsController {
                     );
                 });
 
-        loadSampleData();
+        collections.addAll(
+                service.loadCollections()
+        );
 
         FilteredList<CollectionItem> filteredData =
                 new FilteredList<>(collections, b -> true);
@@ -150,6 +156,10 @@ public class CollectionsController {
                                         total
                                 )
                         );
+
+                        service.saveCollections(
+                                collections
+                        );
                     }
 
                 } catch (Exception ignored) {
@@ -168,30 +178,10 @@ public class CollectionsController {
         if (selected != null) {
 
             collections.remove(selected);
+
+            service.saveCollections(
+                    collections
+            );
         }
-    }
-
-    private void loadSampleData() {
-
-        collections.add(
-                new CollectionItem(
-                        "Deportivos",
-                        5
-                )
-        );
-
-        collections.add(
-                new CollectionItem(
-                        "Lujo",
-                        3
-                )
-        );
-
-        collections.add(
-                new CollectionItem(
-                        "Vintage",
-                        2
-                )
-        );
     }
 }
